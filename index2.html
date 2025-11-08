@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages: 根目录 vs /docs 文件夹</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #2d3748;
+            --secondary-color: #4a5568;
+            --accent-color: #4299e1;
+            --root-color: #38a169;
+            --docs-color: #d69e2e;
+            --light-color: #f7fafc;
+            --dark-color: #1a202c;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .root, .docs {
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .root {
+            border-top: 4px solid var(--root-color);
+        }
+        
+        .docs {
+            border-top: 4px solid var(--docs-color);
+        }
+        
+        .type-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .root .type-title {
+            color: var(--root-color);
+        }
+        
+        .docs .type-title {
+            color: var(--docs-color);
+        }
+        
+        .icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .file-structure {
+            background-color: #edf2f7;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            line-height: 1.8;
+        }
+        
+        .setting-example {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        
+        .recommendation {
+            background-color: #e6fffa;
+            border-left: 4px solid var(--root-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        
+        .decision-guide {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .guide-step {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .use-case {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .use-case-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .use-case-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3182ce;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>GitHub Pages: 根目录 vs /docs 文件夹</h1>
+            <p>了解两种部署方式的区别，选择最适合您项目的方法</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">两种部署来源对比</h2>
+            
+            <div class="comparison">
+                <div class="root">
+                    <h3 class="type-title">
+                        <span class="icon">📂</span>
+                        根目录 (/)
+                    </h3>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-icon">✅</span>
+                            <strong>默认选项</strong> - 大多数项目的首选
+                        </li>
+                        <li>
+                            <span class="feature-icon">🚀</span>
+                            <strong>简单直接</strong> - 文件直接放在仓库根目录
+                        </li>
+                        <li>
+                            <span class="feature-icon">🔄</span>
+                            <strong>自动构建</strong> - 支持Jekyll等静态站点生成器
+                        </li>
+                        <li>
+                            <span class="feature-icon">📝</span>
+                            <strong>代码文档一体化</strong> - 代码和网站在同一位置
+                        </li>
+                        <li>
+                            <span class="feature-icon">⚠️</span>
+                            <strong>可能杂乱</strong> - 项目文件与网站文件混合
+                        </li>
+                    </ul>
+                    
+                    <div class="file-structure">
+                        <strong>典型文件结构：</strong><br>
+                        repository/<br>
+                        ├── index.html &nbsp; &nbsp; &nbsp; &nbsp; # 网站主页<br>
+                        ├── css/<br>
+                        │ &nbsp; └── style.css &nbsp; # 样式文件<br>
+                        ├── js/<br>
+                        │ &nbsp; └── script.js &nbsp; # 脚本文件<br>
+                        ├── README.md &nbsp; &nbsp; # 项目说明<br>
+                        └── src/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # 源代码目录
+                    </div>
+                </div>
+                
+                <div class="docs">
+                    <h3 class="type-title">
+                        <span class="icon">📁</span>
+                        /docs 文件夹
+                    </h3>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-icon">📋</span>
+                            <strong>分离关注点</strong> - 网站文件与项目代码分离
+                        </li>
+                        <li>
+                            <span class="feature-icon">🧹</span>
+                            <strong>整洁有序</strong> - 项目结构更清晰
+                        </li>
+                        <li>
+                            <span class="feature-icon">🔧</span>
+                            <strong>保留构建输出</strong> - 适合静态站点生成器的输出目录
+                        </li>
+                        <li>
+                            <span class="feature-icon">📚</span>
+                            <strong>适合项目文档</strong> - 专门用于文档网站
+                        </li>
+                        <li>
+                            <span class="feature-icon">🔄</span>
+                            <strong>需要额外配置</strong> - 需在设置中指定/docs文件夹
+                        </li>
+                    </ul>
+                    
+                    <div class="file-structure">
+                        <strong>典型文件结构：</strong><br>
+                        repository/<br>
+                        ├── docs/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # 网站文件目录<br>
+                        │ &nbsp; ├── index.html &nbsp; # 网站主页<br>
+                        │ &nbsp; ├── css/<br>
+                        │ &nbsp; └── js/<br>
+                        ├── README.md &nbsp; &nbsp; # 项目说明<br>
+                        ├── src/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # 源代码目录<br>
+                        └── package.json &nbsp; # 项目配置
+                    </div>
+                </div>
+            </div>
+            
+            <div class="setting-example">
+                <h4>GitHub Pages 设置位置：</h4>
+                <p>仓库 Settings → Pages → Build and deployment → Source</p>
+                <p>选择 "Deploy from a branch" 然后选择：</p>
+                <ul>
+                    <li><code>/ (root)</code> - 从根目录部署</li>
+                    <li><code>/docs</code> - 从/docs文件夹部署</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">何时使用哪种方式？</h2>
+            
+            <div class="use-case">
+                <div class="use-case-card">
+                    <h3 class="use-case-title">使用根目录的情况</h3>
+                    <ul>
+                        <li><strong>纯静态网站项目</strong> - 仓库专门用于网站</li>
+                        <li><strong>用户/组织站点</strong> - username.github.io</li>
+                        <li><strong>简单项目演示</strong> - 代码和演示紧密结合</li>
+                        <li><strong>Jekyll博客</strong> - 利用GitHub Pages内置支持</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case-card">
+                    <h3 class="use-case-title">使用/docs文件夹的情况</h3>
+                    <ul>
+                        <li><strong>代码库的文档网站</strong> - 如API文档</li>
+                        <li><strong>静态站点生成器输出</strong> - 如VuePress、Docusaurus</li>
+                        <li><strong>项目演示与代码分离</strong> - 保持代码库整洁</li>
+                        <li><strong>大型项目</strong> - 需要清晰的文件组织</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="recommendation">
+                <h3>针对您的具体情况</h3>
+                <p>对于您的 <code>html_css.github.io</code> 仓库：</p>
+                <p><strong>建议使用根目录部署</strong>，因为这是一个专门用于网站的仓库，不需要将网站文件与代码分离。</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">操作指南</h2>
+            
+            <div class="decision-guide">
+                <div class="guide-step">
+                    <h3>从根目录部署的步骤</h3>
+                    <ol>
+                        <li>将网站文件直接放在仓库根目录</li>
+                        <li>确保有 <code>index.html</code> 文件</li>
+                        <li>进入仓库 Settings → Pages</li>
+                        <li>在 Source 部分选择 "Deploy from a branch"</li>
+                        <li>选择分支（通常是 main）和 <code>/(root)</code> 文件夹</li>
+                        <li>点击 Save</li>
+                    </ol>
+                </div>
+                
+                <div class="guide-step">
+                    <h3>从/docs文件夹部署的步骤</h3>
+                    <ol>
+                        <li>在仓库中创建 <code>docs</code> 文件夹</li>
+                        <li>将所有网站文件放入 <code>docs</code> 文件夹</li>
+                        <li>确保 <code>docs</code> 文件夹中有 <code>index.html</code> 文件</li>
+                        <li>进入仓库 Settings → Pages</li>
+                        <li>在 Source 部分选择 "Deploy from a branch"</li>
+                        <li>选择分支（通常是 main）和 <code>/docs</code> 文件夹</li>
+                        <li>点击 Save</li>
+                    </ol>
+                </div>
+                
+                <div class="guide-step">
+                    <h3>转换现有设置</h3>
+                    <p>如果您想从一种方式转换到另一种：</p>
+                    <ol>
+                        <li>在本地移动文件（从根目录到/docs或反之）</li>
+                        <li>提交更改到GitHub</li>
+                        <li>更新GitHub Pages设置中的Source选项</li>
+                        <li>等待重新部署完成</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="#" class="btn" onclick="showRootStructure()">查看根目录结构示例</a>
+                <a href="#" class="btn" onclick="showDocsStructure()">查看/docs结构示例</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>GitHub Pages 部署来源指南 - 根目录 vs /docs 文件夹</p>
+            <p>根据您的项目需求选择最合适的部署方式</p>
+        </div>
+    </footer>
+
+    <script>
+        function showRootStructure() {
+            alert(`根目录部署的典型文件结构：
+
+repository/
+├── index.html          # 网站主页
+├── about.html          # 关于页面
+├── css/
+│   └── style.css       # 样式文件
+├── js/
+│   └── script.js       # 脚本文件
+├── images/             # 图片资源
+│   └── logo.png
+└── README.md           # 项目说明
+
+GitHub Pages 设置：选择 "/ (root)"`);
+        }
+        
+        function showDocsStructure() {
+            alert(`/docs 文件夹部署的典型文件结构：
+
+repository/
+├── docs/               # 网站文件目录
+│   ├── index.html      # 网站主页
+│   ├── about.html      # 关于页面
+│   ├── css/
+│   │   └── style.css   # 样式文件
+│   ├── js/
+│   │   └── script.js   # 脚本文件
+│   └── images/         # 图片资源
+│       └── logo.png
+├── src/                # 源代码目录
+├── tests/              # 测试文件
+├── README.md           # 项目说明
+└── package.json        # 项目配置
+
+GitHub Pages 设置：选择 "/docs"`);
+        }
+        
+        // 添加交互效果
+        document.querySelectorAll('.use-case-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.transition = 'transform 0.3s';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
