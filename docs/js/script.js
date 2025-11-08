@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModal = document.querySelector('.close');
     
     // 文件结构模板
-    const rootStructure = `
+    const rootStructure = 
         <div class="file-item folder">repository/</div>
         <div class="file-item file highlight">index.html &nbsp; &nbsp; &nbsp; &nbsp; # 网站主页</div>
         <div class="file-item file">about.html &nbsp; &nbsp; &nbsp; # 关于页面</div>
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="file-item file">README.md &nbsp; &nbsp; # 项目说明</div>
         <div class="file-item folder">src/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # 源代码目录</div>
         <div class="file-item file">package.json &nbsp; # 项目配置</div>
-    `;
+    ;
     
     // 初始化显示根目录结构
     structureDisplay.innerHTML = rootStructure;
