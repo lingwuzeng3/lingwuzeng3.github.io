@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let content = '';
         if (isRoot) {
-            content = `
+            content = 
                 <h3>根目录部署结果</h3>
                 <p>您的网站已成功部署！</p>
                 <div class="file-item folder">repository/</div>
@@ -93,9 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="file-item file">&nbsp; └── script.js</div>
                 <div class="file-item file">README.md</div>
                 <p class="success-message">✓ GitHub Pages 从根目录提供网站文件</p>
-            `;
+            ;
         } else {
-            content = `
+            content = 
                 <h3>/docs文件夹部署结果</h3>
                 <p>您的网站已成功部署！</p>
                 <div class="file-item folder">repository/</div>
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="file-item file">&nbsp; └── README.md</div>
                 <div class="file-item file">README.md &nbsp; (仓库的README，不会被GitHub Pages提供)</div>
                 <p class="success-message">✓ GitHub Pages 从/docs文件夹提供网站文件</p>
-            `;
+            ;
         }
         
         modalContent.innerHTML = content;
