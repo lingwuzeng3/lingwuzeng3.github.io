@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages 部署指南 - 交互式演示</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>GitHub Pages 部署指南</h1>
+            <p>交互式演示根目录与/docs文件夹的区别</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>选择您的部署方式</h2>
+            <p>点击下面的选项查看不同部署方式的效果和文件结构</p>
+            
+            <div class="selection-buttons">
+                <button id="root-btn" class="btn active">根目录部署 (/)</button>
+                <button id="docs-btn" class="btn">/docs 文件夹部署</button>
+            </div>
+        </section>
+
+        <section class="demo-area">
+            <div class="file-structure">
+                <h3>文件结构预览</h3>
+                <div id="structure-display" class="structure-display">
+                    <!-- 这里将通过JS动态填充 -->
+                </div>
+            </div>
+
+            <div class="settings-preview">
+                <h3>GitHub Pages 设置</h3>
+                <div class="settings-card">
+                    <div class="setting-option">
+                        <label>
+                            <input type="radio" name="deploy-source" value="root" checked>
+                            从根目录部署 (/)
+                        </label>
+                    </div>
+                    <div class="setting-option">
+                        <label>
+                            <input type="radio" name="deploy-source" value="docs">
+                            从/docs文件夹部署
+                        </label>
+                    </div>
+                    <div class="branch-selection">
+                        <label for="branch-select">部署分支:</label>
+                        <select id="branch-select">
+                            <option value="main">main</option>
+                            <option value="master">master</option>
+                            <option value="gh-pages">gh-pages</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="url-preview">
+            <h3>网站访问地址</h3>
+            <div class="url-display">
+                <span id="url-prefix">https://yourusername.github.io/</span>
+                <span id="url-suffix">repository-name</span>
+            </div>
+            <button id="simulate-visit" class="btn secondary">模拟访问</button>
+        </section>
+
+        <section class="use-cases">
+            <h2>使用场景建议</h2>
+            <div class="cases-grid">
+                <div class="case-card" data-type="root">
+                    <h3>使用根目录的情况</h3>
+                    <ul>
+                        <li>纯静态网站项目</li>
+                        <li>用户/组织站点 (username.github.io)</li>
+                        <li>简单项目演示</li>
+                        <li>Jekyll博客</li>
+                    </ul>
+                </div>
+                <div class="case-card" data-type="docs">
+                    <h3>使用/docs文件夹的情况</h3>
+                    <ul>
+                        <li>代码库的文档网站</li>
+                        <li>静态站点生成器输出</li>
+                        <li>项目演示与代码分离</li>
+                        <li>大型项目</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="deploy-steps">
+            <h2>部署步骤</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>创建GitHub仓库</h3>
+                        <p>登录GitHub，创建新的仓库</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>上传网站文件</h3>
+                        <p id="step2-desc">将网站文件上传到仓库根目录</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>启用GitHub Pages</h3>
+                        <p>在仓库设置中选择部署来源</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>访问网站</h3>
+                        <p>等待部署完成，访问您的网站</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>GitHub Pages 部署指南 - 交互式演示</p>
+            <p>通过实际体验理解不同部署方式的区别</p>
+        </div>
+    </footer>
+
+    <div id="visit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>模拟访问结果</h2>
+            <div id="modal-content">
+                <!-- 动态内容 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
