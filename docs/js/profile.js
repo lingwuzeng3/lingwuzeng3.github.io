@@ -49,21 +49,7 @@ function checkSkillAnimation() {
     }
 }
 
-// 滚动动画
-function animateOnScroll() {
-    const elements = document.querySelectorAll('.fade-in');
-    elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.1;
-        
-        if (elementPosition < screenPosition) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-}
-
-// 滚动动画 - 只在需要时才隐藏元素
+// 滚动动画 - 只在需要时才处理元素
 function animateOnScroll() {
     const elements = document.querySelectorAll('.fade-in');
     elements.forEach(element => {
