@@ -441,7 +441,7 @@ footer {
 }
 
 .fade-in {
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
 /* 工具类 */

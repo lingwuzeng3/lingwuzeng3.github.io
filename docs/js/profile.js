@@ -63,11 +63,28 @@ function animateOnScroll() {
     });
 }
 
-// 初始设置动画元素
-document.querySelectorAll('.fade-in').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+// 滚动动画 - 只在需要时才隐藏元素
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.fade-in');
+    elements.forEach(element => {
+        // 如果已经显示过了，不再处理
+        if (element.dataset.animated) return;
+        
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.1;
+        
+        if (elementPosition < screenPosition) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+            element.dataset.animated = 'true';
+        }
+    });
+}
+
+// 页面加载完成后初始化可见元素
+window.addEventListener('load', function() {
+    // 立即显示首屏可见的元素
+    setTimeout(animateOnScroll, 100);
 });
 
 // 表单提交处理
