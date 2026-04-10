@@ -3,318 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to make GitHub Pages</title>
-    <style>
-        /* 基础样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary-color: #2d3748;
-            --secondary-color: #4a5568;
-            --accent-color: #4299e1;
-            --light-color: #f7fafc;
-            --dark-color: #1a202c;
-        }
-        
-        body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 导航栏 */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-        
-        /* 英雄区域 */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #3182ce;
-        }
-        
-        /* 内容区域 */
-        section {
-            padding: 4rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2rem;
-            color: var(--primary-color);
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        
-        /* 部署指南 */
-        .deploy-guide {
-            background-color: var(--dark-color);
-            color: white;
-        }
-        
-        .deploy-guide .section-title {
-            color: white;
-        }
-        
-        .steps {
-            counter-reset: step-counter;
-        }
-        
-        .step {
-            margin-bottom: 2rem;
-            padding-left: 3rem;
-            position: relative;
-        }
-        
-        .step:before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background-color: var(--accent-color);
-            color: white;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        /* 页脚 */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>lingwuzeng - 个人主页</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- 导航栏 -->
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">MyStaticSite</div>
-                <ul class="nav-links">
-                    <li><a href="profile.html">个人空间</a></li>
-                    <li><a href="#features">功能</a></li>
-                    <li><a href="index2.html">部署指南</a></li>
-                    <li><a href="#contact">联系</a></li>
-                </ul>
-            </nav>
+        <div class="container header-container">
+            <a href="#" class="logo">lingwuzeng</a>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="tutorial.html">教程</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>部署静态网站</h1>
-            <p>这是一个使用GitHub Pages部署的静态网站示例，展示了现代Web设计的最佳实践。</p>
-            <a href="index3.html" class="btn">学习如何部署</a>
-        </div>
-    </section>
-
-    <section id="features">
-        <div class="container">
-            <h2 class="section-title">网站特性</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>响应式设计</h3>
-                    <p>自适应各种屏幕尺寸，从手机到桌面设备都能完美显示。</p>
-                </div>
-                <div class="feature-card">
-                    <h3>现代UI</h3>
-                    <p>使用CSS变量和现代布局技术，创建美观的用户界面。</p>
-                </div>
-                <div class="feature-card">
-                    <h3>快速加载</h3>
-                    <p>静态网站提供极快的加载速度，优化用户体验。</p>
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 首页区域 -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>你好，我是 <span>lingwuzeng</span></h1>
+                    <p>热爱创造简洁、实用的数字解决方案。专注于后端开发和用户体验设计，致力于将复杂问题转化为优雅的解决方案。</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">查看我的项目</a>
+                        <a href="#contact" class="btn btn-secondary">联系我</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="deploy-guide" id="deploy">
-        <div class="container">
-            <h2 class="section-title">GitHub Pages 部署指南</h2>
-            <div class="steps">
-                <div class="step">
-                    <h3>创建GitHub仓库</h3>
-                    <p>登录GitHub，创建一个新的仓库。如果创建用户站点，仓库名必须为<code>username.github.io</code>；如果是项目站点，可以任意命名。</p>
-                </div>
-                <div class="step">
-                    <h3>上传网站文件</h3>
-                    <p>将你的静态网站文件（HTML、CSS、JS、图片等）上传到仓库。确保有一个<code>index.html</code>文件作为入口点。</p>
-                </div>
-                <div class="step">
-                    <h3>启用GitHub Pages</h3>
-                    <p>进入仓库设置，找到"Pages"部分，选择部署来源（通常是main分支或/docs文件夹），然后保存。</p>
-                </div>
-                <div class="step">
-                    <h3>访问你的网站</h3>
-                    <p>等待几分钟后，你的网站将在<code>https://username.github.io</code>（用户站点）或<code>https://username.github.io/repository-name</code>（项目站点）上线。</p>
+        <!-- 关于区域 -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image fade-in">
+                        <!-- 头像占位图，可替换为自己的图片 -->
+                        <img src="images/profile.jpg" alt="个人头像" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2334495e%22 width=%22200%22 height=%22200%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>👤</text></svg>'">
+                    </div>
+                    
+                    <div class="about-content fade-in">
+                        <h2>关于我</h2>
+                        <p>我是一名全栈开发者，对技术和设计充满热情。拥有多年开发经验，擅长使用现代技术栈构建响应式Web应用。</p>
+                        <p>我热爱学习新技术，并喜欢将创新想法转化为实际产品。在业余时间，我喜欢研究新框架、阅读技术书籍和参与开源项目。</p>
+                        <p>我相信好的代码应该是简洁、可维护且高效的，而好的设计应该直观、美观且实用。</p>
+                        
+                        <div class="mt-30">
+                            <a href="#contact" class="btn btn-primary">了解更多</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer id="contact">
+        <!-- 技能区域 -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-title">
+                    <h2>我的技能</h2>
+                </div>
+                
+                <div class="skills-container">
+                    <!-- 技能项 1 -->
+                    <div class="skill-item card fade-in">
+                        <h3>前端开发</h3>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                        <p>HTML5, CSS3, JavaScript, React, Vue.js, 响应式设计</p>
+                    </div>
+                    
+                    <!-- 技能项 2 -->
+                    <div class="skill-item card fade-in">
+                        <h3>后端开发</h3>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                        <p>Node.js, Spring, Python, Redis, 数据库设计</p>
+                    </div>
+                    
+                    <!-- 技能项 3 -->
+                    <div class="skill-item card fade-in">
+                        <h3>UI/UX 设计</h3>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                        <p>Figma, Adobe XD, 用户研究, 原型设计, 设计系统</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目区域 -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-title">
+                    <h2>我的项目</h2>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- 项目 1 -->
+                    <div class="project-card card fade-in">
+                        <h3>个人博客系统</h3>
+                        <p>一个简洁的个人博客系统，支持Markdown编辑、文章分类和评论功能。</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 项目 2 -->
+                    <div class="project-card card fade-in">
+                        <h3>
+                          <a href="https://github.com/lingwuzeng3/sky-take-out" 
+                             style="color: inherit; text-decoration: none;">
+                            苍穹外卖业务逻辑
+                          </a>
+                        </h3>
+                        <p>一个包含客户端与服务端的Web网站设计，包括多种业务逻辑处理</p>
+                        <div class="project-tags">
+                            <span class="tag">Spring</span>
+                            <span class="tag">MyBatis</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 项目 3 -->
+                    <div class="project-card card fade-in">
+                        <h3>
+                          <a href="https://github.com/lingwuzeng3/hmdp"
+                             style="color: inherit; text-decoration: none;">
+                            黑马点评并发处理
+                          </a>
+                        </h3>
+                        <p>一个现代电子商务平台的订单并发处理，注重用户体验和UI界面设计。</p>
+                        <div class="project-tags">
+                            <span class="tag">Redis</span>
+                            <span class="tag">RabbitMQ</span>
+                            <span class="tag">Nginx</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系区域 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>联系我</h2>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-info card fade-in">
+                        <h3>与我联系</h3>
+                        <p>如果您有项目需要讨论，或者想了解更多关于我的工作，请随时联系。</p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>邮箱</h4>
+                                <p>lingwu215@qq.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>电话</h4>
+                                <p>+86 19170406426</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>地址</h4>
+                                <p>中国 · 江西</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://github.com/lingwuzeng3" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form card fade-in">
+                        <h3 class="mb-20">发送消息</h3>
+                        <form id="contactForm">
+                            <div class="form-group mb-20">
+                                <input type="text" class="form-control" placeholder="您的姓名" required>
+                            </div>
+                            
+                            <div class="form-group mb-20">
+                                <input type="email" class="form-control" placeholder="您的邮箱" required>
+                            </div>
+                            
+                            <div class="form-group mb-20">
+                                <textarea class="form-control" placeholder="您的消息" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">发送消息</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
         <div class="container">
-            <p>&copy; 2025 我的静态网站. 使用 GitHub Pages 部署.</p>
-            <p>联系邮箱: lingwu215@qq.com</p>
+            <div class="footer-content">
+                <a href="#" class="logo" style="color: white; margin-bottom: 20px; display: inline-block;">lingwuzeng</a>
+                <p>简洁 · 实用 · 创新</p>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 个人网站. 保留所有权利.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // 导航栏高亮
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 60) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+    <!-- 引入JavaScript文件 -->
+    <script src="js/profile.js"></script>
 </body>
-
 </html>
-
-
-
-
