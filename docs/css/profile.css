@@ -207,7 +207,7 @@ header {
 
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 25px;
 }
 
@@ -242,6 +242,21 @@ header {
 .project-card h3 {
     margin-bottom: 15px;
     color: #2c3e50;
+}
+
+.project-card h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-card h3 a:hover {
+    text-decoration: underline;
+}
+
+.project-card p a,
+.contact-item a {
+    color: inherit;
+    text-decoration: underline;
 }
 
 .project-tags {

@@ -76,8 +76,12 @@ window.addEventListener('load', function() {
 // 表单提交处理
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('感谢您的留言！我会尽快回复您。');
-    this.reset();
+    const name = this.elements.name.value.trim();
+    const email = this.elements.email.value.trim();
+    const message = this.elements.message.value.trim();
+    const subject = encodeURIComponent('来自个人主页的留言 - ' + name);
+    const body = encodeURIComponent(message + '\n\n— ' + name + ' <' + email + '>');
+    window.location.href = 'mailto:lingwu215@qq.com?subject=' + subject + '&body=' + body;
 });
 
 // 平滑滚动
@@ -124,10 +128,6 @@ window.addEventListener('load', function() {
     setTimeout(checkSkillAnimation, 300);
 });
 
-// 添加控制台欢迎信息（可选）
-console.log('欢迎使用极简个人网站模板！');
-console.log('您可以轻松修改和扩展此模板。');
-console.log('如需帮助，请参考代码注释。');
 
 // 黑暗模式切换功能（可选扩展）
 function initializeDarkModeToggle() {
