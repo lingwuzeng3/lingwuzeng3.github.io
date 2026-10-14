@@ -81,7 +81,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const message = this.elements.message.value.trim();
     const subject = encodeURIComponent('来自个人主页的留言 - ' + name);
     const body = encodeURIComponent(message + '\n\n— ' + name + ' <' + email + '>');
-    window.location.href = 'mailto:lingwuzeng3@gmail.com?subject=' + subject + '&body=' + body;
+    window.location.href = 'mailto:z09103839@163.com?subject=' + subject + '&body=' + body;
 });
 
 // 平滑滚动
